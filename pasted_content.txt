@@ -1,0 +1,100 @@
+Here's a detailed prompt you can use in lovable.dev to generate your portfolio site:
+
+# Prompt for Lovable.dev - Portfolio Site for AI/ML Engineer
+
+Create a modern, minimalist portfolio website for Ravani Roshan, an AI/ML engineer and tech enthusiast. The site should have a sophisticated, performance-focused design with dark mode as default and a light mode toggle option.
+
+## Site Structure
+Implement a responsive design with:
+- Header with navigation (Home, Work, Blog, Photos)
+- Dark/Light mode toggle in the top-right corner
+- Footer with social links and copyright info
+
+## Visual Design
+- **Primary Color Scheme**: Dark theme with deep navy (#0F172A) background, slate gray (#334155) for secondary elements, and teal (#0D9488) for accents and interactive elements
+- **Typography**: Modern sans-serif fonts (Inter for headings, IBM Plex Sans for body text, JetBrains Mono for code snippets)
+- **Spacing**: Generous whitespace for readability
+- **Animations**: Subtle micro-interactions and smooth transitions between sections/pages
+- **Layout**: Three-column grid on desktop that collapses appropriately on mobile devices
+
+## Home Page
+- **Hero Section**: Large, bold display of "Ravani Roshan" with an animated subtitle "AI/ML Engineer & Tech Enthusiast"
+- **About Section**: Concise personal introduction highlighting expertise in AI/ML and product engineering
+- **Featured Projects**: Grid of 3-4 highlighted projects with hover effects showing brief descriptions
+- **Stats Section**: Visual representation of:
+  * Typing speed metrics (WPM: 85, WPS: 4.25)
+  * Equipment specs (Mechanical keyboard: [model], Programming mouse: [model])
+  * GitHub contribution graph or coding activity metrics
+- **Music Section**: Embedded Spotify playlist titled "My Coding Soundtrack" with a minimalist player design
+
+## Work Page
+Display a portfolio grid of projects with filtering options. Each project card should include:
+- Project thumbnail/logo
+- Project title
+- Brief description
+- Technologies used (as tags)
+- "View Project" button
+
+### Featured Projects to Include:
+
+1. **BlendTools**
+   * Description: A curated collection of tools designed to enhance and streamline workflows in Blender, the open-source 3D creation suite.
+   * Features: Script Repository, Add-on Recommendations, Tutorials & Guides
+   * Visual: 3D rendering or Blender-themed imagery
+
+2. **CrewHub**
+   * Description: A collaborative platform for AI agent orchestration and workflow management that empowers teams to assemble, configure, and manage specialized AI agents.
+   * Features: AI Agent Management, Tool Integration, Visual Workflow Builder, Team Collaboration, Advanced Analytics
+   * Technologies: Vite, TypeScript, React, shadcn-ui, Tailwind CSS
+   * Visual: Dashboard or workflow diagram imagery
+
+3. **Markcode-t1**
+   * Description: Next-gen coding companion designed to supercharge development workflow with a sleek interface and powerful features.
+   * Features: Code Editor, File Tree, Terminal, Top Bar, Dashboard & Workspace
+   * Visual: Code editor interface preview
+
+4. **Wardrobify**
+   * Description: AI-powered personal stylist web application that leverages artificial intelligence to provide personalized fashion recommendations.
+   * Features: Personalized Recommendations, User-Friendly Interface, Responsive Design
+   * Visual: Fashion-themed imagery or app screenshot
+
+## Blog Page
+- Grid layout of blog post cards with:
+  * Featured image
+  * Title
+  * Publication date
+  * Reading time estimate
+  * Brief excerpt
+  * Tags/categories
+- Filtering system by topics (AI/ML, Web Development, Product Design)
+- Search functionality
+- Pagination or infinite scroll for blog posts
+
+## Photos Page
+- Masonry grid layout gallery focused on travel photography
+- Emphasis on coastal regions and national parks
+- Lightbox functionality for viewing full-size images
+- Optional location tagging and brief descriptions
+- Filtering by location or theme
+
+## Technical Requirements
+- Implement proper SEO optimization
+- Ensure fast loading times (Core Web Vitals compliance)
+- Mobile-responsive design that works flawlessly on all device sizes
+- Smooth animations that don't impact performance
+- Accessible design following WCAG guidelines
+- Local storage for saving user preferences (like dark/light mode)
+
+## Interactive Elements
+- Smooth scroll between sections
+- Animated counting for statistics
+- Hover effects on project cards and buttons
+- Fade-in animations for content as user scrolls
+- Theme toggle with smooth transition between dark and light modes
+
+## Additional Sections
+- "Contact" section with a simple form and links to professional profiles
+- "Skills" section showing expertise in relevant technologies (possibly as an interactive visualization)
+- "Timeline" showing professional journey and major milestones
+
+Generate a clean, professional implementation that showcases technical expertise while maintaining excellent usability and visual appeal. The site should reflect both technical proficiency and design sensibility appropriate for an AI/ML engineer who values performance and minimalist aesthetics.
