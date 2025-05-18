@@ -7,12 +7,12 @@ const Stats: React.FC = () => {
         <span className="mr-1">░</span> STATS
       </h2>
       <div className="space-y-1 text-gray-800 dark:text-gray-200">
-        <p>bouldering</p>
-        <p>sport climbing<span className="ml-2 text-gray-500 dark:text-gray-400">v5.10B</span></p>
-        <p>typing 15s<span className="ml-2 text-gray-500 dark:text-gray-400">85 WPM</span></p>
-        <p>typing 10w<span className="ml-2 text-gray-500 dark:text-gray-400">4.25 WPS</span></p>
-        <p>keyboard<span className="ml-2 text-gray-500 dark:text-gray-400">QK65</span></p>
-        <p>mouse<span className="ml-2 text-gray-500 dark:text-gray-400">Razer Viper V2 Pro</span></p>
+        <p>languages<span className="ml-2 text-gray-500 dark:text-gray-400">Python, JavaScript, Rust</span></p>
+        <p>contributions<span className="ml-2 text-gray-500 dark:text-gray-400">1,200+ commits</span></p>
+        <p>AI models<span className="ml-2 text-gray-500 dark:text-gray-400">fine-tuned 8</span></p>
+        <p>typing speed<span className="ml-2 text-gray-500 dark:text-gray-400">120 WPM</span></p>
+        <p>coffee intake<span className="ml-2 text-gray-500 dark:text-gray-400">4 cups/day</span></p>
+        <p>hackathons<span className="ml-2 text-gray-500 dark:text-gray-400">won 3</span></p>
       </div>
     </section>
   );

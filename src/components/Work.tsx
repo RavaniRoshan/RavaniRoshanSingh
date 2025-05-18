@@ -5,6 +5,20 @@ const Work: React.FC = () => {
     <section>
       <h2 className="text-lg font-medium mb-4">work</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* CrewHub Project - Now shown as current */}
+        <div className="project-card orange">
+          <div className="project-icon orange">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium">CrewHub</h3>
+          <p className="mt-1">A collaborative platform for AI agent orchestration and workflow management that empowers teams.</p>
+          <p className="date-range mt-2">now</p>
+        </div>
+
         {/* BlendTools Project */}
         <div className="project-card purple">
           <div className="project-icon purple">
@@ -16,21 +30,7 @@ const Work: React.FC = () => {
           </div>
           <h3 className="text-lg font-medium">BlendTools</h3>
           <p className="mt-1">A curated collection of tools designed to enhance and streamline workflows in Blender, the open-source 3D creation suite.</p>
-          <p className="date-range mt-2">now</p>
-        </div>
-
-        {/* CrewHub Project */}
-        <div className="project-card orange">
-          <div className="project-icon orange">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </div>
-          <h3 className="text-lg font-medium">CrewHub</h3>
-          <p className="mt-1">A collaborative platform for AI agent orchestration and workflow management that empowers teams.</p>
-          <p className="date-range mt-2">Sep 2022 - Dec 2023</p>
+          <p className="date-range mt-2">Jan 2024 - Apr 2025</p>
         </div>
 
         {/* Markcode-t1 Project */}
@@ -55,7 +55,7 @@ const Work: React.FC = () => {
           </div>
           <h3 className="text-lg font-medium">Wardrobify</h3>
           <p className="mt-1">AI-powered personal stylist web application that leverages artificial intelligence to provide personalized fashion recommendations.</p>
-          <p className="date-range mt-2">Sept 2018 - now</p>
+          <p className="date-range mt-2">Sept 2018 - Dec 2023</p>
         </div>
       </div>
     </section>
