@@ -7,19 +7,20 @@ const Places: React.FC = () => {
         <span className="mr-1">♥</span> places
       </h2>
       <p className="mb-4">
-        Here are some of my favorite places to go when I need to recharge. Lots of these photos are along the California coast. Mainly San Francisco, San Diego, and Orange County.
+        Here are some of my favorite places in Gujarat and India where I find inspiration and recharge. From the vibrant tech hubs to peaceful natural landscapes that fuel my creativity.
       </p>
       <div className="photo-gallery">
-        <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29" alt="San Francisco building" className="shadow-md" />
-        <img src="https://images.unsplash.com/photo-1506146332389-18140dc7b2fb" alt="Bridge in San Francisco" className="shadow-md" />
-        <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29" alt="Golden Gate Bridge" className="shadow-md" />
-        <img src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad" alt="California coastline" className="shadow-md" />
-        <img src="https://images.unsplash.com/photo-1470093851219-69951fcbb533" alt="Beach sunset" className="shadow-md" />
-        <img src="https://images.unsplash.com/photo-1505245208761-ba872912fac0" alt="Ocean waves" className="shadow-md" />
-        <img src="https://images.unsplash.com/photo-1518473352243-e26e3d76c6f0" alt="Sunset at beach" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220" alt="Ahmedabad cityscape" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96" alt="Gujarat architecture" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4" alt="Tech workspace" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b" alt="Modern office space" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80" alt="Coding environment" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Innovation hub" className="shadow-md" />
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Development workspace" className="shadow-md" />
       </div>
     </section>
   );
 };
 
 export default Places;
+
