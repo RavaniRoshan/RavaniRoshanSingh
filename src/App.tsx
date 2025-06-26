@@ -8,6 +8,14 @@ import Music from './components/Music';
 import Stats from './components/Stats';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import BlogPost1 from './pages/BlogPost1';
+import BlogPost2 from './pages/BlogPost2';
+import BlogPost3 from './pages/BlogPost3';
+import BlogPost4 from './pages/BlogPost4';
+import BlogPost5 from './pages/BlogPost5';
+import BlogPost6 from './pages/BlogPost6';
+import BlogPost7 from './pages/BlogPost7';
+import BlogPost8 from './pages/BlogPost8';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -50,6 +58,14 @@ function App() {
           } />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/ai-product-development" element={<BlogPost />} />
+          <Route path="/blog/demystifying-ai-agents" element={<BlogPost1 />} />
+          <Route path="/blog/full-stack-development" element={<BlogPost2 />} />
+          <Route path="/blog/ai-personalization" element={<BlogPost3 />} />
+          <Route path="/blog/optimizing-performance" element={<BlogPost4 />} />
+          <Route path="/blog/machine-learning-fundamentals" element={<BlogPost5 />} />
+          <Route path="/blog/ethical-ai-development" element={<BlogPost6 />} />
+          <Route path="/blog/data-structures-algorithms" element={<BlogPost7 />} />
+          <Route path="/blog/cloud-architecture" element={<BlogPost8 />} />
         </Routes>
       </div>
     </Router>
@@ -57,3 +73,4 @@ function App() {
 }
 
 export default App;
+
