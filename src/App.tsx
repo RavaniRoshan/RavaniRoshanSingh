@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 import Header from './components/Header';
 import About from './components/About';
@@ -68,6 +69,7 @@ function App() {
           <Route path="/blog/cloud-architecture" element={<BlogPost8 />} />
         </Routes>
       </div>
+      <Analytics />
     </Router>
   );
 }
