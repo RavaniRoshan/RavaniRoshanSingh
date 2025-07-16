@@ -1,11 +1,41 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { SidebarTrigger } from './ui/sidebar';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 }
+
+interface NavLinkProps {
+  to: string;
+  isActive: boolean;
+  children: ReactNode;
+  onClick?: () => void;
+}
+
+const NavLink: FC<NavLinkProps> = ({ to, isActive, children, onClick }) => (
+  <Link
+    to={to}
+    onClick={onClick}
+    className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
+      isActive
+        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+    }`}
+  >
+    <span className="relative z-10">{children}</span>
+    <div
+      className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
+        isActive
+          ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
+          : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
+      }`}
+      aria-hidden="true"
+    />
+  </Link>
+);
 
 export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,10 +51,10 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
   }, []);
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/20 dark:border-gray-700/20' 
+        isScrolled
+          ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/20 dark:border-gray-700/20'
           : 'bg-transparent'
       } flex justify-between items-center py-4`}
     >
@@ -33,23 +63,23 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           Ravani Roshan
         </h1>
         <div className="flex space-x-4">
-          <a 
-            href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center mt-1 group-hover:translate-x-1"
             aria-label="LinkedIn Profile"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="mr-1 transition-transform duration-300 group-hover:rotate-12"
               aria-hidden="true"
             >
@@ -59,23 +89,23 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             </svg>
             <span>roshan-ravani</span>
           </a>
-          <a 
-            href="https://github.com/RavaniRoshan" 
-            target="_blank" 
+          <a
+            href="https://github.com/RavaniRoshan"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center mt-1 group-hover:translate-x-1"
             aria-label="GitHub Profile"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="mr-1 transition-transform duration-300 group-hover:rotate-12"
               aria-hidden="true"
             >
@@ -85,76 +115,46 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           </a>
         </div>
       </div>
-      <nav className="flex items-center space-x-2">
-        <Link
-          to="/"
-          className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
-            location.pathname === '/'
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-          }`}
-        >
-          <span className="relative z-10">home</span>
-          <div 
-            className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
-              location.pathname === '/'
-                ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
-                : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
-            }`}
-            aria-hidden="true"
-          />
-        </Link>
-        <Link
-          to="/blog"
-          className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
-            location.pathname.startsWith('/blog')
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-          }`}
-        >
-          <span className="relative z-10">blog</span>
-          <div 
-            className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
-              location.pathname.startsWith('/blog')
-                ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
-                : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
-            }`}
-            aria-hidden="true"
-          />
-        </Link>
-        <button 
+      <nav className="hidden md:flex items-center space-x-2">
+        <NavLink to="/" isActive={location.pathname === '/'}>
+          home
+        </NavLink>
+        <NavLink to="/blog" isActive={location.pathname.startsWith('/blog')}>
+          blog
+        </NavLink>
+        <button
           onClick={toggleTheme}
           className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:scale-110 hover:rotate-180 hover:shadow-lg"
           aria-label="Toggle theme"
           type="button"
         >
           {theme === 'light' ? (
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="transition-transform duration-300"
               aria-hidden="true"
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           ) : (
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="transition-transform duration-300"
               aria-hidden="true"
             >
@@ -171,6 +171,9 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           )}
         </button>
       </nav>
+      <div className="md:hidden">
+        <SidebarTrigger />
+      </div>
     </header>
   );
 };
