@@ -141,6 +141,8 @@ const Stats: React.FC = () => {
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
+              role="figure"
+              aria-label={stat.label}
             >
               {/* Background gradient overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
@@ -151,14 +153,21 @@ const Stats: React.FC = () => {
               <div className="relative z-10 flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center mb-2">
-                    <span className="text-lg mr-2 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-lg mr-2 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       {stat.icon}
                     </span>
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">
                       {stat.label}
                     </span>
                   </div>
-                  <div className={`text-sm font-semibold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
+                  <div
+                    className={`text-sm font-semibold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}
+                    role={stat.isAnimated ? "progressbar" : "text"}
+                    aria-valuemin={stat.isAnimated ? 0 : undefined}
+                    aria-valuemax={stat.isAnimated ? finalValues[stat.label as keyof typeof finalValues] : undefined}
+                    aria-valuenow={stat.isAnimated ? animatedValues[stat.label as keyof typeof animatedValues] : undefined}
+                    aria-valuetext={stat.value}
+                  >
                     {stat.value}
                   </div>
                 </div>
@@ -171,8 +180,8 @@ const Stats: React.FC = () => {
               </div>
               
               {/* Floating particles */}
-              <div className="absolute top-1 right-1 w-0.5 h-0.5 bg-white rounded-full opacity-60 animate-ping delay-100"></div>
-              <div className="absolute bottom-1 left-1 w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-ping delay-300"></div>
+              <div className="absolute top-1 right-1 w-0.5 h-0.5 bg-white rounded-full opacity-60 animate-ping delay-100" aria-hidden="true"></div>
+              <div className="absolute bottom-1 left-1 w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-ping delay-300" aria-hidden="true"></div>
             </div>
           ))}
         </div>

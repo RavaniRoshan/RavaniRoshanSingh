@@ -54,12 +54,26 @@ body {
   min-height: 100vh;
 }
 
+@keyframes background-pan {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
 .dark body {
   background: 
-    radial-gradient(circle at top left, hsl(222 47% 10%), transparent 80%),
-    radial-gradient(circle at bottom right, hsl(224 71% 10%), transparent 80%),
+    radial-gradient(circle at top left, hsl(222 47% 10%), transparent 40%),
+    radial-gradient(circle at bottom right, hsl(280 71% 10%), transparent 40%),
     hsl(222 47% 5%);
+  background-size: 200% 200%;
   background-attachment: fixed;
+  animation: background-pan 30s ease-in-out infinite;
 }
 
 html {
