@@ -52,6 +52,13 @@ body {
   color: hsl(var(--foreground));
   font-feature-settings: "rlig" 1, "calt" 1;
   min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, hsl(0 0% 90%), transparent 40%),
+    radial-gradient(circle at bottom right, hsl(0 0% 90%), transparent 40%),
+    hsl(0 0% 95%);
+  background-size: 200% 200%;
+  background-attachment: fixed;
+  animation: background-pan 30s ease-in-out infinite;
 }
 
 @keyframes background-pan {
@@ -68,9 +75,9 @@ body {
 
 .dark body {
   background: 
-    radial-gradient(circle at top left, hsl(222 47% 10%), transparent 40%),
-    radial-gradient(circle at bottom right, hsl(280 71% 10%), transparent 40%),
-    hsl(222 47% 5%);
+    radial-gradient(circle at top left, hsl(0 0% 10%), transparent 40%),
+    radial-gradient(circle at bottom right, hsl(0 0% 10%), transparent 40%),
+    #000;
   background-size: 200% 200%;
   background-attachment: fixed;
   animation: background-pan 30s ease-in-out infinite;
