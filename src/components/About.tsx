@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ABOUT_TEXT, SKILLS } from '../lib/constants';
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
   const sectionRef = useRef<HTMLElement>(null);
+  
+  const fullText = "Highly motivated Computer Science Engineering student with expertise in full-stack development and artificial intelligence. I specialize in transforming complex technical challenges into elegant, scalable solutions using modern technologies like Python, JavaScript, Rust, and cutting-edge AI frameworks. My passion lies in building innovative applications that push the boundaries of what's possible, from AI-powered platforms to immersive web experiences. Currently pursuing my B.Tech at Silver Oak University while actively contributing to open-source projects and winning hackathons. I thrive on architectural challenges, system optimization, and creating technology that makes a meaningful impact.";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,19 +21,15 @@ const About: React.FC = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
     if (isVisible) {
       let index = 0;
       const timer = setInterval(() => {
-        if (index < ABOUT_TEXT.length) {
-          setTypedText(ABOUT_TEXT.slice(0, index + 1));
+        if (index < fullText.length) {
+          setTypedText(fullText.slice(0, index + 1));
           index++;
         } else {
           clearInterval(timer);
@@ -41,7 +38,7 @@ const About: React.FC = () => {
 
       return () => clearInterval(timer);
     }
-  }, [isVisible]);
+  }, [isVisible, fullText]);
 
   return (
     <section 
@@ -65,7 +62,7 @@ const About: React.FC = () => {
           <div className="relative z-10">
             <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-base">
               {typedText}
-              {isVisible && typedText.length < ABOUT_TEXT.length && (
+              {isVisible && typedText.length < fullText.length && (
                 <span className="animate-pulse">|</span>
               )}
             </p>
@@ -82,15 +79,14 @@ const About: React.FC = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
         }`}>
           <div className="flex flex-wrap gap-2">
-            {SKILLS.map((skill, index) => (
-              <button
+            {['Python', 'JavaScript', 'Rust', 'React', 'AI/ML', 'Full-Stack'].map((skill, index) => (
+              <span 
                 key={skill}
                 className={`px-3 py-1 text-xs font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-default`}
                 style={{ animationDelay: `${index * 100}ms` }}
-                tabIndex={0}
               >
                 {skill}
-              </button>
+              </span>
             ))}
           </div>
         </div>
