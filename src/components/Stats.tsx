@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 const Stats: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,15 +11,15 @@ const Stats: React.FC = () => {
   });
   const sectionRef = useRef<HTMLElement>(null);
 
-  const finalValues = {
+  const finalValues = useMemo(() => ({
     contributions: 1200,
     aiModels: 8,
     typingSpeed: 120,
     coffeeIntake: 4,
     hackathons: 3
-  };
+  }), []);
 
-  const stats = [
+  const stats = useMemo(() => [
     {
       label: 'languages',
       value: 'Python, JavaScript, Rust',
@@ -62,7 +62,7 @@ const Stats: React.FC = () => {
       color: 'from-red-500 to-pink-500',
       isAnimated: true
     }
-  ];
+  ], [animatedValues]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,7 +111,7 @@ const Stats: React.FC = () => {
       setTimeout(() => animateValue('coffeeIntake', finalValues.coffeeIntake, 800), 1200);
       setTimeout(() => animateValue('hackathons', finalValues.hackathons, 600), 1500);
     }
-  }, [isVisible]);
+  }, [isVisible, finalValues]);
 
   return (
     <section 
@@ -205,4 +205,3 @@ const Stats: React.FC = () => {
 };
 
 export default Stats;
-
