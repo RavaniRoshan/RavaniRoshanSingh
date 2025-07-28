@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import About from './components/About';
 import Work from './components/Work';
+import Certificates from './components/Certificates';
 import Places from './components/Places';
 import Music from './components/Music';
 import Stats from './components/Stats';
@@ -17,6 +18,7 @@ import BlogPost5 from './pages/BlogPost5';
 import BlogPost6 from './pages/BlogPost6';
 import BlogPost7 from './pages/BlogPost7';
 import BlogPost8 from './pages/BlogPost8';
+import CertificatesPage from './pages/CertificatesPage';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -52,12 +54,14 @@ function App() {
             <main className="space-y-12 mt-8">
               <About />
               <Work />
+              <Certificates />
               <Places />
               <Music />
               <Stats />
             </main>
           } />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/blog/ai-product-development" element={<BlogPost />} />
           <Route path="/blog/demystifying-ai-agents" element={<BlogPost1 />} />
           <Route path="/blog/full-stack-development" element={<BlogPost2 />} />
