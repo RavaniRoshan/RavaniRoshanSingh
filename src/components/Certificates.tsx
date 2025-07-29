@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const Certificates: React.FC = () => {
-  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [, setVisibleCards] = useState<number[]>([]);
   const [currentRotatingIndex, setCurrentRotatingIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -87,61 +87,7 @@ const Certificates: React.FC = () => {
     }
   ];
 
-  const allCertificates = [
-    ...certificates,
-    {
-      id: 7,
-      title: "Goldman Sachs - Software Engineering Job Simulation",
-      issuer: "Forage",
-      date: "Nov 2024",
-      credentialId: "h6gJo9d3pLZRCQEBf",
-      link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/MBA4MnZTNFEoJZGnk/NPdeQ43o8P9HJmJzg_MBA4MnZTNFEoJZGnk_5PuCun9rwkcGsmBLf_1731675288028_completion_certificate.pdf",
-      skills: ["Software Engineering", "Finance"],
-      category: "Software Engineering",
-      color: "yellow",
-      gradient: "from-yellow-500 to-orange-600",
-      bgGradient: "from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20"
-    },
-    {
-      id: 8,
-      title: "Webflow 101",
-      issuer: "Webflow",
-      date: "Nov 2024",
-      credentialId: "",
-      link: "https://www.linkedin.com/in/roshan-ravani-3a79882a3/details/certifications/1.730964986537e+12/single-media-viewer",
-      skills: ["Web Design", "No-Code"],
-      category: "Web Development",
-      color: "pink",
-      gradient: "from-pink-500 to-rose-600",
-      bgGradient: "from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20"
-    },
-    {
-      id: 9,
-      title: "LangChain for LLM Application Development",
-      issuer: "DeepLearning.AI",
-      date: "2024",
-      credentialId: "",
-      link: "https://learn.deeplearning.ai/accomplishments/06d9afa2-4db9-4085-a8e9-b81c1b7dc343?usp=sharing",
-      skills: ["LangChain", "LLM"],
-      category: "AI/ML",
-      color: "emerald",
-      gradient: "from-emerald-500 to-green-600",
-      bgGradient: "from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20"
-    },
-    {
-      id: 10,
-      title: "AI Agents in LangGraph",
-      issuer: "DeepLearning.AI",
-      date: "2024",
-      credentialId: "",
-      link: "https://learn.deeplearning.ai/accomplishments/ebe94656-8e70-4b8e-afd0-384d7046c9c6?usp=sharing",
-      skills: ["AI Agents", "LangGraph"],
-      category: "AI/ML",
-      color: "violet",
-      gradient: "from-violet-500 to-purple-600",
-      bgGradient: "from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20"
-    }
-  ];
+
 
   // Rotating animation effect
   useEffect(() => {
@@ -229,7 +175,7 @@ const Certificates: React.FC = () => {
       <div className="relative mb-8 overflow-hidden">
         <div className="flex transition-transform duration-1000 ease-in-out" 
              style={{ transform: `translateX(-${currentRotatingIndex * 100}%)` }}>
-          {certificates.map((cert, index) => (
+          {certificates.map((cert) => (
             <div key={cert.id} className="w-full flex-shrink-0 px-2">
               <div className={`group relative overflow-hidden rounded-xl bg-gradient-to-br ${cert.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${cert.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -310,4 +256,3 @@ const Certificates: React.FC = () => {
 };
 
 export default Certificates;
-
