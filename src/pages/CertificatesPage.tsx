@@ -265,6 +265,19 @@ const CertificatesPage: React.FC = () => {
       color: "neutral",
       gradient: "from-neutral-500 to-gray-600",
       bgGradient: "from-neutral-50 to-gray-50 dark:from-neutral-900/20 dark:to-gray-900/20"
+    },
+    {
+      id: 21,
+      title: "Building toward Computer Use with Anthropic",
+      issuer: "DeepLearning.AI",
+      date: "Mar 2025",
+      credentialId: "6b5022b3-80b5-401c-9a7d-c407188b103a",
+      link: "https://learn.deeplearning.ai/accomplishments/6b5022b3-80b5-401c-9a7d-c407188b103a?usp=sharing",
+      skills: ["AI", "Anthropic", "LLM"],
+      category: "AI/ML",
+      color: "fuchsia",
+      gradient: "from-fuchsia-500 to-pink-600",
+      bgGradient: "from-fuchsia-50 to-pink-50 dark:from-fuchsia-900/20 dark:to-pink-900/20"
     }
   ];
 
