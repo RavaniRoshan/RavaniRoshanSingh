@@ -1,104 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { allCertificates } from '@/data/certificates';
 
 const Certificates: React.FC = () => {
   const [, setVisibleCards] = useState<number[]>([]);
   const [currentRotatingIndex, setCurrentRotatingIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const certificates = [
-    {
-      id: 1,
-      title: "Front End Development Libraries",
-      issuer: "freeCodeCamp",
-      date: "Feb 2025",
-      credentialId: "fccfa059490-3d19-4491-a271-f6d4b517d582-fedl",
-      link: "https://freecodecamp.org/certification/fccfa059490-3d19-4491-a271-f6d4b517d582/front-end-development-libraries",
-      skills: ["React.js"],
-      category: "Frontend Development",
-      color: "blue",
-      gradient: "from-blue-500 to-cyan-600",
-      bgGradient: "from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20"
-    },
-    {
-      id: 2,
-      title: "Machine Learning with Python",
-      issuer: "freeCodeCamp",
-      date: "Dec 2024",
-      credentialId: "fccfa059490-3d19-4491-a271-f6d4b517d582-mlwp",
-      link: "https://freecodecamp.org/certification/fccfa059490-3d19-4491-a271-f6d4b517d582/machine-learning-with-python-v7",
-      skills: ["Machine Learning", "Python"],
-      category: "Machine Learning",
-      color: "purple",
-      gradient: "from-purple-500 to-pink-600",
-      bgGradient: "from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"
-    },
-    {
-      id: 3,
-      title: "Prompt Engineering for Vision Models",
-      issuer: "DeepLearning.AI",
-      date: "Dec 2024",
-      credentialId: "",
-      link: "https://learn.deeplearning.ai/accomplishments/75befc5c-d9f3-42f0-b1fd-70a1384c0fac?usp=sharing",
-      skills: ["Prompt Engineering", "Computer Vision"],
-      category: "AI/ML",
-      color: "green",
-      gradient: "from-green-500 to-emerald-600",
-      bgGradient: "from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20"
-    },
-    {
-      id: 4,
-      title: "Introduction to Generative AI",
-      issuer: "Google",
-      date: "Nov 2024",
-      credentialId: "12849044",
-      link: "https://www.cloudskillsboost.google/public_profiles/66247599-bda3-4997-a75c-5146258d420d/badges/12849044",
-      skills: ["Generative AI", "Google Cloud"],
-      category: "AI/ML",
-      color: "orange",
-      gradient: "from-orange-500 to-red-600",
-      bgGradient: "from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20"
-    },
-    {
-      id: 5,
-      title: "Foundational C# with Microsoft",
-      issuer: "freeCodeCamp",
-      date: "Nov 2024",
-      credentialId: "fccfa059490-3d19-4491-a271-f6d4b517d582-fcswm",
-      link: "https://freecodecamp.org/certification/fccfa059490-3d19-4491-a271-f6d4b517d582/foundational-c-sharp-with-microsoft",
-      skills: ["C#", "Microsoft"],
-      category: "Programming",
-      color: "indigo",
-      gradient: "from-indigo-500 to-purple-600",
-      bgGradient: "from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20"
-    },
-    {
-      id: 6,
-      title: "Computer Vision",
-      issuer: "Kaggle",
-      date: "Nov 2024",
-      credentialId: "",
-      link: "https://www.linkedin.com/in/roshan-ravani-3a79882a3/details/certifications/1.731159323007e+12/single-media-viewer",
-      skills: ["Computer Vision", "Deep Learning"],
-      category: "AI/ML",
-      color: "teal",
-      gradient: "from-teal-500 to-cyan-600",
-      bgGradient: "from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20"
-    },
-    {
-      id: 7,
-      title: "Building toward Computer Use with Anthropic",
-      issuer: "DeepLearning.AI",
-      date: "Mar 2025",
-      credentialId: "6b5022b3-80b5-401c-9a7d-c407188b103a",
-      link: "https://learn.deeplearning.ai/accomplishments/6b5022b3-80b5-401c-9a7d-c407188b103a?usp=sharing",
-      skills: ["AI", "Anthropic", "LLM"],
-      category: "AI/ML",
-      color: "red",
-      gradient: "from-red-500 to-rose-600",
-      bgGradient: "from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20"
-    }
-  ];
+  const certificates = allCertificates.slice(-7);
 
 
 
