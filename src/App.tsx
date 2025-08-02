@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import './App.css';
+import { Toaster } from "@/components/ui/toaster";
 import Header from './components/Header';
 import About from './components/About';
 import Work from './components/Work';
@@ -73,6 +74,7 @@ function App() {
           <Route path="/blog/cloud-architecture" element={<BlogPost8 />} />
         </Routes>
       </div>
+      <Toaster />
       <Analytics />
     </Router>
   );

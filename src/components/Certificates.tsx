@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const Certificates: React.FC = () => {
-  const [, setVisibleCards] = useState<number[]>([]);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [currentRotatingIndex, setCurrentRotatingIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -100,8 +100,6 @@ const Certificates: React.FC = () => {
     }
   ];
 
-
-
   // Rotating animation effect
   useEffect(() => {
     const interval = setInterval(() => {
@@ -188,10 +186,26 @@ const Certificates: React.FC = () => {
       <div className="relative mb-8 overflow-hidden">
         <div className="flex transition-transform duration-1000 ease-in-out" 
              style={{ transform: `translateX(-${currentRotatingIndex * 100}%)` }}>
-          {certificates.map((cert) => (
-            <div key={cert.id} className="w-full flex-shrink-0 px-2">
+          {certificates.map((cert, index) => (
+            <div 
+              key={cert.id} 
+              data-index={index}
+              className={`certificate-card-animated w-full flex-shrink-0 px-2 ${
+                visibleCards.includes(index) 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{ 
+                transitionDelay: `${index * 100}ms`,
+                animationDelay: `${index * 100}ms`
+              }}
+            >
               <div className={`group relative overflow-hidden rounded-xl bg-gradient-to-br ${cert.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${cert.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                
+                {/* Floating particles */}
+                <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-60 animate-ping"></div>
+                <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-ping delay-300"></div>
                 
                 <div className="relative z-10 p-6">
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${cert.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
@@ -227,6 +241,9 @@ const Certificates: React.FC = () => {
                     </a>
                   </div>
                 </div>
+                
+                {/* Hover effect border */}
+                <div className={`absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:${cert.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
               </div>
             </div>
           ))}
