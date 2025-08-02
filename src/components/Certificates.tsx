@@ -95,7 +95,7 @@ const Certificates: React.FC = () => {
       <div className="relative mb-8 overflow-hidden">
         <div className="flex transition-transform duration-1000 ease-in-out" 
              style={{ transform: `translateX(-${currentRotatingIndex * 100}%)` }}>
-          {certificates.map((cert) => (
+          {certificates.map((cert, index) => (
             <div 
               key={cert.id} 
               data-index={index}
