@@ -4,7 +4,7 @@ This is a personal portfolio website built with React, TypeScript, and Vite. It 
 
 ## Live Demo
 
-You can view the live demo of the portfolio at [https://your-live-demo-url.com](https://my-personalportfolio.vercel.app/).
+You can view the live demo of the portfolio at [RavaniRoshan](https://my-personalportfolio.vercel.app/).
 
 ## Features
 
