@@ -28,11 +28,11 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-4 z-50 transition-all duration-300 mx-4 ${
         isScrolled
-          ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/20 dark:border-gray-700/20'
-          : 'bg-transparent'
-      } flex justify-between items-center py-4`}
+          ? 'backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200/30 dark:border-gray-700/30 shadow-xl rounded-2xl'
+          : 'backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border border-gray-200/20 dark:border-gray-700/20 shadow-lg rounded-2xl'
+      } flex justify-between items-center py-4 px-6`}
     >
       <div className="group">
         <h1 className="text-xl font-medium transition-all duration-300 hover:scale-105 cursor-pointer">
@@ -132,7 +132,7 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
         </div>
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:scale-110 hover:rotate-180 hover:shadow-lg"
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:rotate-180 hover:shadow-lg"
           aria-label="Toggle theme"
           type="button"
         >

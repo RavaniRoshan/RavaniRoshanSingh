@@ -26,16 +26,17 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    // Check for user preference
+    // Set default to light mode and check for user preference
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    } else if (prefersDark) {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
+    } else {
+      // Default to light mode instead of system preference
+      setTheme('light');
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
@@ -48,7 +49,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen px-4 py-8 md:px-8 lg:px-16 max-w-4xl mx-auto">
+      <div className="min-h-screen px-4 py-8 md:px-8 lg:px-16 max-w-4xl mx-auto relative z-10">
         <Header theme={theme} toggleTheme={toggleTheme} />
         <Routes>
           <Route path="/" element={

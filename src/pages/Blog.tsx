@@ -87,7 +87,7 @@ const Blog: React.FC = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
     if (sectionRef.current) {
@@ -100,8 +100,8 @@ const Blog: React.FC = () => {
   return (
     <div 
       ref={sectionRef}
-      className={`min-h-screen px-4 py-8 md:px-8 lg:px-16 max-w-4xl mx-auto transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      className={`min-h-screen px-4 py-8 md:px-8 lg:px-16 max-w-4xl mx-auto transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
     >
       <header className="mb-12 text-center">
@@ -122,10 +122,10 @@ const Blog: React.FC = () => {
         {blogPosts.map((post, index) => (
           <div 
             key={post.id} 
-            className={`relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer group ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            className={`relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
-            style={{ transitionDelay: `${index * 150}ms` }}
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
             {/* Animated background overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>

@@ -7,8 +7,8 @@ const Work: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'CrewHub',
-      description: 'A collaborative platform for AI agent orchestration and workflow management that empowers teams.',
+      title: 'Nidera',
+      description: 'A revolutionary Chromium-based browser that seamlessly integrates AI agent capabilities directly into the browsing experience. Nidera transforms the browser from a passive web viewer into an intelligent digital companion that understands user context, automates complex workflows, and deeply integrates with the user\'s entire digital ecosystem.',
       period: 'now',
       color: 'orange',
       icon: (
@@ -39,8 +39,8 @@ const Work: React.FC = () => {
     },
     {
       id: 3,
-      title: 'Markcode-t1',
-      description: 'Next-gen coding companion designed to supercharge development workflow with a sleek interface and powerful features.',
+      title: 'ReguSense AI',
+      description: 'A modern SaaS website for an AI Regulatory Compliance Translator that helps small businesses navigate AI regulations (EU AI Act, Colorado AI Act, California AI laws) by converting complex legal requirements into actionable compliance checklists.',
       period: 'Jul 2022 - Nov 2023',
       color: 'blue',
       icon: (
@@ -54,8 +54,8 @@ const Work: React.FC = () => {
     },
     {
       id: 4,
-      title: 'Wardrobify',
-      description: 'AI-powered personal stylist web application that leverages artificial intelligence to provide personalized fashion recommendations.',
+      title: 'DayWise',
+      description: 'A flexible personal day planner app combining Notion-like organization, Google Gemini intelligence, and visual insights to help users track goals, manage time, and make informed daily decisions.',
       period: 'Sept 2018 - Dec 2023',
       color: 'yellow',
       icon: (
@@ -78,7 +78,7 @@ const Work: React.FC = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
     const cards = document.querySelectorAll('.project-card-animated');
@@ -92,7 +92,7 @@ const Work: React.FC = () => {
       <div className="flex items-center mb-6">
         <h2 className="text-lg font-medium relative">
           work
-          <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-1000 delay-300 animate-pulse"></div>
+          <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-700 delay-200 animate-pulse"></div>
         </h2>
         <div className="ml-4 flex space-x-1">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -106,25 +106,25 @@ const Work: React.FC = () => {
           <div
             key={project.id}
             data-index={index}
-            className={`project-card-animated group relative overflow-hidden rounded-xl bg-gradient-to-br ${project.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer ${
+            className={`project-card-animated group relative overflow-hidden rounded-xl bg-gradient-to-br ${project.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer ${
               visibleCards.includes(index) 
                 ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-10'
+                : 'opacity-0 translate-y-8'
             }`}
             style={{ 
-              transitionDelay: `${index * 150}ms`,
-              animationDelay: `${index * 150}ms`
+              transitionDelay: `${index * 100}ms`,
+              animationDelay: `${index * 100}ms`
             }}
           >
-            {/* Animated background overlay */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+            {/* Simplified background overlay */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
             
-            {/* Floating particles */}
-            <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-60 animate-ping"></div>
-            <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-ping delay-300"></div>
+            {/* Reduced floating particles */}
+            <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-40 animate-pulse"></div>
+            <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-30 animate-pulse delay-300"></div>
             
             <div className="relative z-10 p-6">
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${project.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${project.gradient} text-white mb-4 group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
                 {project.icon}
               </div>
               
@@ -150,15 +150,15 @@ const Work: React.FC = () => {
               </div>
             </div>
             
-            {/* Hover effect border */}
-            <div className={`absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+            {/* Simplified hover effect border */}
+            <div className={`absolute inset-0 rounded-xl border border-transparent group-hover:border-gray-300 dark:group-hover:border-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
           </div>
         ))}
       </div>
       
-      {/* Background decoration */}
-      <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-xl"></div>
-      <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-pink-500/10 to-yellow-500/10 rounded-full blur-xl"></div>
+      {/* Reduced background decoration */}
+      <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-lg"></div>
+      <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-br from-pink-500/5 to-yellow-500/5 rounded-full blur-lg"></div>
     </section>
   );
 };

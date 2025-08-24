@@ -14,7 +14,7 @@ const About: React.FC = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
     if (sectionRef.current) {
@@ -43,14 +43,14 @@ const About: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className={`transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      className={`transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
     >
       <div className="relative">
         <h2 className="text-lg font-medium mb-4 relative inline-block">
           about
-          <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-1000 delay-300 group-hover:w-full"></div>
+          <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-700 delay-200 group-hover:w-full"></div>
         </h2>
         
         <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
@@ -75,14 +75,14 @@ const About: React.FC = () => {
         </div>
         
         {/* Skills highlight */}
-        <div className={`mt-6 transition-all duration-1000 delay-500 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        <div className={`mt-6 transition-all duration-700 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           <div className="flex flex-wrap gap-2">
             {['Python', 'JavaScript', 'Rust', 'React', 'AI/ML', 'Full-Stack'].map((skill, index) => (
               <span 
                 key={skill}
-                className={`px-3 py-1 text-xs font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-default`}
+                className={`px-3 py-1 text-xs font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-default`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {skill}

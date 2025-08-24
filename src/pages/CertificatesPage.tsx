@@ -60,7 +60,7 @@ const CertificatesPage: React.FC = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
     const cards = document.querySelectorAll('.certificate-card-animated');
@@ -186,10 +186,10 @@ const CertificatesPage: React.FC = () => {
           <div
             key={cert.id}
             data-index={index}
-            className={`certificate-card-animated group relative overflow-hidden rounded-xl bg-gradient-to-br ${cert.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer ${
+            className={`certificate-card-animated group relative overflow-hidden rounded-xl bg-gradient-to-br ${cert.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer ${
               visibleCards.includes(index) 
                 ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 translate-y-10'
+                : 'opacity-0 translate-y-8'
             }`}
             style={{ 
               transitionDelay: `${index * 100}ms`,
@@ -199,12 +199,12 @@ const CertificatesPage: React.FC = () => {
             {/* Animated background overlay */}
             <div className={`absolute inset-0 bg-gradient-to-br ${cert.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
             
-            {/* Floating particles */}
-            <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-60 animate-ping"></div>
-            <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-ping delay-300"></div>
+            {/* Reduced floating particles */}
+            <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-40 animate-pulse"></div>
+            <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-30 animate-pulse delay-300"></div>
             
             <div className="relative z-10 p-6">
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${cert.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${cert.gradient} text-white mb-4 group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
                 {getCertificateIcon(cert.category)}
               </div>
               
@@ -261,8 +261,8 @@ const CertificatesPage: React.FC = () => {
               )}
             </div>
             
-            {/* Hover effect border */}
-            <div className={`absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:${cert.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+            {/* Simplified hover effect border */}
+            <div className={`absolute inset-0 rounded-xl border border-transparent group-hover:border-gray-300 dark:group-hover:border-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
           </div>
         ))}
       </div>

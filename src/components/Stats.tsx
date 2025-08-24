@@ -71,7 +71,7 @@ const Stats: React.FC = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: '50px' }
     );
 
     if (sectionRef.current) {
@@ -116,8 +116,8 @@ const Stats: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className={`transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      className={`transition-all duration-700 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
     >
       <div className="relative">
@@ -127,9 +127,9 @@ const Stats: React.FC = () => {
             STATS
           </span>
           <div className="ml-4 flex space-x-1">
-            <div className="w-1 h-1 bg-blue-500 rounded-full animate-ping"></div>
-            <div className="w-1 h-1 bg-green-500 rounded-full animate-ping delay-100"></div>
-            <div className="w-1 h-1 bg-purple-500 rounded-full animate-ping delay-200"></div>
+                      <div className="w-1 h-1 bg-blue-500 rounded-full animate-pulse"></div>
+          <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse delay-100"></div>
+          <div className="w-1 h-1 bg-purple-500 rounded-full animate-pulse delay-200"></div>
           </div>
         </h2>
         
@@ -137,8 +137,8 @@ const Stats: React.FC = () => {
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`group relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-4 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+              className={`group relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-4 border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
@@ -151,7 +151,7 @@ const Stats: React.FC = () => {
               <div className="relative z-10 flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center mb-2">
-                    <span className="text-lg mr-2 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-lg mr-2 group-hover:scale-105 transition-transform duration-300">
                       {stat.icon}
                     </span>
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300">
@@ -170,16 +170,16 @@ const Stats: React.FC = () => {
                 )}
               </div>
               
-              {/* Floating particles */}
-              <div className="absolute top-1 right-1 w-0.5 h-0.5 bg-white rounded-full opacity-60 animate-ping delay-100"></div>
-              <div className="absolute bottom-1 left-1 w-0.5 h-0.5 bg-white rounded-full opacity-40 animate-ping delay-300"></div>
+              {/* Reduced floating particles */}
+              <div className="absolute top-1 right-1 w-0.5 h-0.5 bg-white rounded-full opacity-30 animate-pulse delay-100"></div>
+              <div className="absolute bottom-1 left-1 w-0.5 h-0.5 bg-white rounded-full opacity-20 animate-pulse delay-300"></div>
             </div>
           ))}
         </div>
         
         {/* Terminal-style footer */}
-        <div className={`mt-6 p-4 bg-gray-900 dark:bg-gray-950 rounded-lg border border-gray-700 font-mono text-sm transition-all duration-1000 delay-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        <div className={`mt-6 p-4 bg-gray-900 dark:bg-gray-950 rounded-lg border border-gray-700 font-mono text-sm transition-all duration-700 delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           <div className="flex items-center mb-2">
             <div className="flex space-x-1 mr-3">
