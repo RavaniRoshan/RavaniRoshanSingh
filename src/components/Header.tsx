@@ -30,9 +30,9 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
     <header
       className={`sticky top-4 z-50 transition-all duration-300 mx-4 ${
         isScrolled
-          ? 'backdrop-blur-xl bg-white/90 dark:bg-gray-900/90 border border-gray-200/30 dark:border-gray-700/30 shadow-xl rounded-2xl'
-          : 'backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border border-gray-200/20 dark:border-gray-700/20 shadow-lg rounded-2xl'
-      } flex justify-between items-center py-4 px-6`}
+          ? 'backdrop-blur-2xl bg-gradient-to-b from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-900/60 border border-white/20 dark:border-gray-700/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl'
+          : 'backdrop-blur-xl bg-gradient-to-b from-white/70 to-white/50 dark:from-gray-900/70 dark:to-gray-900/50 border border-white/10 dark:border-gray-700/10 shadow-[0_4px_16px_0_rgba(31,38,135,0.25)] rounded-2xl'
+      } flex justify-between items-center py-4 px-6 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:pointer-events-none`}
     >
       <div className="group">
         <h1 className="text-xl font-medium transition-all duration-300 hover:scale-105 cursor-pointer">
