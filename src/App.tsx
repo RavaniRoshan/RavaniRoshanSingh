@@ -19,6 +19,7 @@ import BlogPost5 from './pages/BlogPost5';
 import BlogPost6 from './pages/BlogPost6';
 import BlogPost7 from './pages/BlogPost7';
 import BlogPost8 from './pages/BlogPost8';
+import BlogPost9 from './pages/BlogPost9';
 import CertificatesPage from './pages/CertificatesPage';
 import { useState, useEffect } from 'react';
 
@@ -73,6 +74,7 @@ function App() {
           <Route path="/blog/ethical-ai-development" element={<BlogPost6 />} />
           <Route path="/blog/data-structures-algorithms" element={<BlogPost7 />} />
           <Route path="/blog/cloud-architecture" element={<BlogPost8 />} />
+          <Route path="/blog/building-agent-x" element={<BlogPost9 />} />
         </Routes>
       </div>
       <Toaster />

@@ -7,6 +7,15 @@ const Blog: React.FC = () => {
 
   const blogPosts = [
     {
+      id: 9,
+      title: "Building agent-X: The Vision-Based Web AI Revolutionizing Digital Automation",
+      date: "October 22, 2025",
+      excerpt: "A deep dive into agent-X, an open-source project combining vision-language models with browser automation to create truly autonomous web agents.",
+      readTime: "15 min read",
+      tags: ["AI", "Automation", "Open Source", "Vision Models"],
+      link: "/blog/building-agent-x"
+    },
+    {
       id: 1,
       title: "Demystifying AI Agent Orchestration: A Deep Dive into CrewHub",
       date: "June 25, 2025",
