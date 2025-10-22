@@ -24,11 +24,11 @@ const BlogPost9: React.FC = () => {
             <div className="py-16 px-4">
               <div className="text-center mb-8">
                 <div className="flex justify-center items-center mb-8">
-                  <div className="bg-purple-600 p-3 rounded-xl shadow-lg">
-                    <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  </div>
+                  <img 
+                    src="/images/image.png" 
+                    alt="Agent-X Logo" 
+                    className="w-16 h-16 rounded-xl shadow-lg"
+                  />
                   <span className="ml-3 text-xl font-semibold">Agent-X</span>
                 </div>
                 <div className="inline-flex items-center bg-white/80 px-4 py-2 rounded-full shadow-sm mb-12">
