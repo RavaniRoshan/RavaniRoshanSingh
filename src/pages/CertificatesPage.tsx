@@ -139,25 +139,37 @@ const CertificatesPage: React.FC = () => {
       {/* Search and Sort Controls */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="flex-grow">
-            <input
-              type="text"
-              placeholder="Search certificates..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search certificates..."
+                className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 font-medium hover:border-blue-400 dark:hover:border-blue-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
         </div>
         <div className="flex items-center gap-2">
-            <select
-                className="px-4 py-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700"
-                value={sortOrder}
-                onChange={(e) => setSortOrder(e.target.value)}
-            >
-                <option value="date-desc">Date (Newest)</option>
-                <option value="date-asc">Date (Oldest)</option>
-                <option value="title-asc">Title (A-Z)</option>
-                <option value="title-desc">Title (Z-A)</option>
-            </select>
+            <div className="relative min-w-max">
+              <select
+                  className="px-4 py-3 border-2 border-gray-300 dark:border-gray-700 rounded-lg dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 font-medium appearance-none cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 pr-10"
+                  value={sortOrder}
+                  onChange={(e) => setSortOrder(e.target.value)}
+              >
+                  <option value="date-desc">📅 Newest</option>
+                  <option value="date-asc">📅 Oldest</option>
+                  <option value="title-asc">🔤 A-Z</option>
+                  <option value="title-desc">🔤 Z-A</option>
+              </select>
+              <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-900 dark:text-white">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
+            </div>
         </div>
       </div>
 

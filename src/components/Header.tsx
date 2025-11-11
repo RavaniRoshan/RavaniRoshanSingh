@@ -129,6 +129,24 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
               aria-hidden="true"
             />
           </Link>
+          <Link
+            to="/connect"
+            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
+              location.pathname === '/connect'
+                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+            }`}
+          >
+            <span className="relative z-10">connect</span>
+            <div
+              className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
+                location.pathname === '/connect'
+                  ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
+                  : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
+              }`}
+              aria-hidden="true"
+            />
+          </Link>
         </div>
         <button
           onClick={toggleTheme}
@@ -203,6 +221,13 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             onClick={toggleMenu}
           >
             blog
+          </Link>
+          <Link
+            to="/connect"
+            className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+            onClick={toggleMenu}
+          >
+            connect
           </Link>
         </div>
       )}
