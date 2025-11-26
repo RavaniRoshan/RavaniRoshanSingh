@@ -10,7 +10,8 @@ interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBurgerMenuExpanded, setIsBurgerMenuExpanded] = useState(false);
+  const [expandTimeout, setExpandTimeout] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -66,6 +67,30 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             <span>roshan-ravani</span>
           </a>
           <a
+            href="https://x.com/RoshanAIs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-300 flex items-center mt-1 group-hover:translate-x-1"
+            aria-label="X (Twitter) Profile"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="mr-1 transition-transform duration-300 group-hover:rotate-12"
+              aria-hidden="true"
+            >
+              <path d="M4 4l16 16M20 4l-16 16" strokeLinecap="round" />
+            </svg>
+            <span>RoshanAIs</span>
+          </a>
+          <a
             href="https://github.com/RavaniRoshan"
             target="_blank"
             rel="noopener noreferrer"
@@ -91,62 +116,84 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           </a>
         </div>
       </div>
-      <nav className="flex items-center space-x-2">
-        <div className="hidden md:flex items-center space-x-2">
+      <nav className="flex items-center space-x-2 relative">
+        {/* Home Button Always Visible - Expands on Hover */}
+        <div
+          className="relative"
+          onMouseEnter={() => {
+            const timeout = setTimeout(() => {
+              setIsBurgerMenuExpanded(true);
+            }, 200);
+            setExpandTimeout(timeout);
+          }}
+          onMouseLeave={() => {
+            if (expandTimeout) {
+              clearTimeout(expandTimeout);
+              setExpandTimeout(null);
+            }
+            setIsBurgerMenuExpanded(false);
+          }}
+        >
           <Link
             to="/"
-            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
-              location.pathname === '/'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-            }`}
+            onClick={() => {
+              // Close menu when home button is clicked
+              setIsBurgerMenuExpanded(false);
+              if (expandTimeout) {
+                clearTimeout(expandTimeout);
+                setExpandTimeout(null);
+              }
+            }}
+            className="relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500"
           >
             <span className="relative z-10">home</span>
-            <div
-              className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
-                location.pathname === '/'
-                  ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
-                  : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
-              }`}
-              aria-hidden="true"
-            />
           </Link>
-          <Link
-            to="/blog"
-            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
-              location.pathname.startsWith('/blog')
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-            }`}
-          >
-            <span className="relative z-10">blog</span>
-            <div
-              className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
-                location.pathname.startsWith('/blog')
-                  ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
-                  : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
-              }`}
-              aria-hidden="true"
-            />
-          </Link>
-          <Link
-            to="/connect"
-            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
-              location.pathname === '/connect'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-            }`}
-          >
-            <span className="relative z-10">connect</span>
-            <div
-              className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-300 ${
-                location.pathname === '/connect'
-                  ? 'from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100'
-                  : 'from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 opacity-0 group-hover:opacity-100'
-              }`}
-              aria-hidden="true"
-            />
-          </Link>
+
+          {/* Expanded Menu - Blog & Connect Below */}
+          {isBurgerMenuExpanded && (
+            <div className="absolute top-full left-0 mt-2 flex flex-col space-y-2 rounded-lg z-40 animate-in fade-in slide-in-from-top-2 duration-300">
+              <style>{`
+                @keyframes expandDown {
+                  0% {
+                    opacity: 0;
+                    transform: translateY(-8px) scaleY(0.9);
+                  }
+                  100% {
+                    opacity: 1;
+                    transform: translateY(0) scaleY(1);
+                  }
+                }
+                .menu-expand-item:nth-child(1) { animation: expandDown 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards; }
+                .menu-expand-item:nth-child(2) { animation: expandDown 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s forwards; }
+              `}</style>
+              <Link
+                to="/blog"
+                onClick={() => {
+                  setIsBurgerMenuExpanded(false);
+                  if (expandTimeout) {
+                    clearTimeout(expandTimeout);
+                    setExpandTimeout(null);
+                  }
+                }}
+                className="menu-expand-item relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group bg-gradient-to-r from-blue-400 to-purple-500 text-white hover:from-purple-500 hover:to-blue-400"
+              >
+                <span className="relative z-10">blog</span>
+              </Link>
+              <Link
+                to="/connect"
+                onClick={() => {
+                  setIsBurgerMenuExpanded(false);
+                  if (expandTimeout) {
+                    clearTimeout(expandTimeout);
+                    setExpandTimeout(null);
+                  }
+                }}
+                className="menu-expand-item relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group bg-gradient-to-r from-blue-400 to-purple-500 text-white hover:from-purple-500 hover:to-blue-400"
+              >
+                <span className="relative z-10">connect</span>
+              </Link>
+            </div>
+          )}
         </div>
         <button
           onClick={toggleTheme}
@@ -196,41 +243,7 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             </svg>
           )}
         </button>
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
       </nav>
-      {isMenuOpen && (
-        <div className="absolute top-16 right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg md:hidden">
-          <Link
-            to="/"
-            className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-            onClick={toggleMenu}
-          >
-            home
-          </Link>
-          <Link
-            to="/blog"
-            className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-            onClick={toggleMenu}
-          >
-            blog
-          </Link>
-          <Link
-            to="/connect"
-            className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
-            onClick={toggleMenu}
-          >
-            connect
-          </Link>
-        </div>
-      )}
     </header>
   );
 };

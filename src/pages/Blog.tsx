@@ -7,6 +7,15 @@ const Blog: React.FC = () => {
 
   const blogPosts = [
     {
+      id: 10,
+      title: "Nano Banana Pro: We Finally Taught an Image Model That Text Is a Real Thing",
+      date: "November 26, 2025",
+      excerpt: "Google's Nano Banana Pro (Gemini 3 Pro Image) represents a breakthrough in image generation—finally rendering legible text without hallucination. Exploring enterprise applications and ROI strategies for this revolutionary technology.",
+      readTime: "15 min read",
+      tags: ["AI", "Google", "Image Generation"],
+      link: "/blog/nano-banana-pro"
+    },
+    {
       id: 9,
       title: "Building agent-X: The Vision-Based Web AI Revolutionizing Digital Automation",
       date: "October 22, 2025",
