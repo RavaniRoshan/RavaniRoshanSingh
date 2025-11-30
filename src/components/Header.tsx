@@ -22,21 +22,17 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
 
   return (
     <header
-      className={`sticky top-4 z-50 transition-all duration-300 ${
+      className={`sticky top-4 z-50 transition-all duration-300 mx-4 ${
         isScrolled
-          ? 'mx-auto w-fit max-w-[600px] py-2 px-4 backdrop-blur-2xl bg-gradient-to-b from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-900/60 border border-white/20 dark:border-gray-700/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-full'
-          : 'mx-4 py-4 px-6 backdrop-blur-xl bg-gradient-to-b from-white/70 to-white/50 dark:from-gray-900/70 dark:to-gray-900/50 border border-white/10 dark:border-gray-700/10 shadow-[0_4px_16px_0_rgba(31,38,135,0.25)] rounded-2xl'
-      } flex justify-between items-center before:absolute before:inset-0 before:rounded-inherit before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:pointer-events-none overflow-hidden`}
+          ? 'backdrop-blur-2xl bg-gradient-to-b from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-900/60 border border-white/20 dark:border-gray-700/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl'
+          : 'backdrop-blur-xl bg-gradient-to-b from-white/70 to-white/50 dark:from-gray-900/70 dark:to-gray-900/50 border border-white/10 dark:border-gray-700/10 shadow-[0_4px_16px_0_rgba(31,38,135,0.25)] rounded-2xl'
+      } flex justify-between items-center py-4 px-6 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:pointer-events-none`}
     >
       <div className="group">
         <h1 className="text-xl font-medium transition-all duration-300 hover:scale-105 cursor-pointer">
           Ravani Roshan
         </h1>
-        <div
-          className={`flex space-x-4 transition-all duration-300 ease-in-out overflow-hidden ${
-            isScrolled ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100'
-          }`}
-        >
+        <div className="flex space-x-4">
           <a
             href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/"
             target="_blank"
