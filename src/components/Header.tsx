@@ -1,7 +1,6 @@
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
