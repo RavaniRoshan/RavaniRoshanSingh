@@ -130,6 +130,16 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
         >
           <span className="relative z-10">blog</span>
         </Link>
+        <Link
+          to="/contact"
+          className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${
+            location.pathname === '/contact'
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
+              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
+          }`}
+        >
+          <span className="relative z-10">contact</span>
+        </Link>
         <button
           onClick={toggleTheme}
           className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:rotate-180 hover:shadow-lg"
