@@ -22,7 +22,6 @@ import BlogPost8 from './pages/BlogPost8';
 import BlogPost9 from './pages/BlogPost9';
 import BlogPost10 from './pages/BlogPost10';
 import CertificatesPage from './pages/CertificatesPage';
-import Connect from './pages/Connect';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -67,7 +66,6 @@ function App() {
           } />
           <Route path="/blog" element={<Blog />} />
           <Route path="/certificates" element={<CertificatesPage />} />
-          <Route path="/connect" element={<Connect />} />
           <Route path="/blog/ai-product-development" element={<BlogPost />} />
           <Route path="/blog/demystifying-ai-agents" element={<BlogPost1 />} />
           <Route path="/blog/full-stack-development" element={<BlogPost2 />} />
