@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useToast } from "@/hooks/use-toast";
+import { Loader2, CheckCircle, Send } from 'lucide-react';
+
+interface FormData {
+  name: string;
+  email: string;
+  purpose: string;
+  message: string;
+}
 
 const Contact: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    purpose: '',
     message: ''
   });
   const sectionRef = useRef<HTMLElement>(null);
@@ -29,7 +38,7 @@ const Contact: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -41,18 +50,25 @@ const Contact: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formspree.io/f/mgvgyzyd', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: `Purpose: ${formData.purpose}\n\n${formData.message}`,
+          _replyto: formData.email,
+          _subject: `Portfolio message from ${formData.name} (Purpose: ${formData.purpose})`
+        })
       });
 
       if (response.ok) {
         toast({
           title: "Message sent!",
           description: "Thanks for reaching out. I'll get back to you soon!",
+          action: <CheckCircle className="h-5 w-5 text-green-500" />,
         });
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', purpose: '', message: '' });
       } else {
         throw new Error('Failed to send');
       }
@@ -62,6 +78,7 @@ const Contact: React.FC = () => {
         description: "Please try again or reach out via email directly.",
         variant: "destructive",
       });
+      console.error('Form submission error:', error);
     } finally {
       setLoading(false);
     }
@@ -143,6 +160,30 @@ const Contact: React.FC = () => {
                 />
               </div>
 
+              {/* Purpose Dropdown */}
+              <div className="group">
+                <label
+                  htmlFor="purpose"
+                  className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300 transition-colors duration-200 group-focus-within:text-blue-500"
+                >
+                  Purpose
+                </label>
+                <select
+                  id="purpose"
+                  name="purpose"
+                  value={formData.purpose}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 outline-none appearance-none"
+                >
+                  <option value="" disabled>Select a purpose</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Project Collaboration">Project Collaboration</option>
+                  <option value="Freelance Opportunity">Freelance Opportunity</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
               {/* Message Field */}
               <div className="group">
                 <label 
@@ -169,17 +210,17 @@ const Contact: React.FC = () => {
                 disabled={loading}
                 className="w-full relative px-6 py-3 rounded-full font-medium bg-gradient-to-r from-blue-500 to-purple-600 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <span className="relative z-10 flex items-center justify-center">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   {loading ? (
                     <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
+                      <Loader2 className="animate-spin h-5 w-5" />
                       Sending...
                     </>
                   ) : (
-                    'Send Message'
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4" />
+                    </>
                   )}
                 </span>
               </button>
@@ -195,7 +236,7 @@ const Contact: React.FC = () => {
             </p>
             <a 
               href="mailto:ravaniroshansingh@gmail.com"
-              className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/90 hover:from-blue-400/60 hover:to-purple-500/60 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-gray-800 dark:text-white hover:from-blue-400/60 hover:to-purple-500/60 transition-all duration-300 hover:scale-105"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                 <rect x="2" y="4" width="20" height="16" rx="2"/>
