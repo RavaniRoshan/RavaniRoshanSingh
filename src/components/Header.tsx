@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
@@ -12,12 +12,31 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const lastScrollY = useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      const threshold = 10; // Buffer to prevent flickering on slow scroll
+
+      if (currentScrollY <= 50) {
+        // Always expanded at the very top
+        setIsScrolled(false);
+      } else if (Math.abs(currentScrollY - lastScrollY.current) > threshold) {
+        if (currentScrollY > lastScrollY.current) {
+          // Scrolling down -> Collapse
+          setIsScrolled(true);
+        } else {
+          // Scrolling up -> Decollapse (Expand)
+          setIsScrolled(false);
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -41,23 +60,117 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
   return (
     <>
       <header
-        className={`sticky top-4 z-50 transition-all duration-300 mx-4 ${isScrolled
-          ? 'backdrop-blur-3xl backdrop-saturate-150 bg-gradient-to-b from-white/40 to-white/20 dark:from-gray-900/40 dark:to-gray-900/20 border border-white/30 dark:border-gray-700/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl'
-          : 'backdrop-blur-2xl backdrop-saturate-150 bg-gradient-to-b from-white/30 to-white/10 dark:from-gray-900/30 dark:to-gray-900/10 border border-white/20 dark:border-gray-700/20 shadow-[0_4px_16px_0_rgba(31,38,135,0.25)] rounded-2xl'
-          } flex justify-between items-center py-3 px-4 md:py-4 md:px-6 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:pointer-events-none`}
+        className={`sticky top-4 z-50 transition-all duration-500 ease-in-out mx-4 ${isScrolled
+          ? 'py-2 md:py-2 backdrop-blur-3xl backdrop-saturate-150 bg-gradient-to-b from-white/40 to-white/20 dark:from-gray-900/40 dark:to-gray-900/20 border border-white/30 dark:border-gray-700/30'
+          : 'py-3 md:py-6 backdrop-blur-2xl backdrop-saturate-150 bg-gradient-to-b from-white/30 to-white/10 dark:from-gray-900/30 dark:to-gray-900/10 border border-white/20 dark:border-gray-700/20'
+          } shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl flex justify-between items-center px-4 md:px-8 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:pointer-events-none`}
       >
         {/* Left Section - Logo and Social Links */}
-        <div className="group flex-shrink-0">
-          <h1 className="text-lg md:text-xl font-medium transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div className="group flex items-center transition-all duration-500">
+          {/* Morphing Logo - Desktop Only */}
+          <h1 className="relative font-medium transition-all duration-500 cursor-pointer hidden md:block">
+            {/* Expanded State Logo */}
+            <span
+              className={`transition-all duration-500 ease-in-out whitespace-nowrap overflow-hidden ${isScrolled ? 'opacity-0 scale-90 max-w-0' : 'opacity-100 scale-100 max-w-[200px]'
+                } text-xl block`}
+            >
+              Ravani Roshan
+            </span>
+            {/* Collapsed State Logo */}
+            <span
+              className={`transition-all duration-500 ease-in-out whitespace-nowrap absolute top-1/2 left-0 -translate-y-1/2 ${isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'
+                } text-2xl font-bold block`}
+            >
+              RR
+            </span>
+          </h1>
+
+          {/* Mobile Logo (Static) */}
+          <h1 className="text-lg font-medium cursor-pointer md:hidden">
             Ravani Roshan
           </h1>
-          {/* Social links - Icons on mobile, Icon+Text on desktop */}
-          <div className="flex space-x-2 md:space-x-4 ml-1 md:ml-0 overflow-x-auto no-scrollbar">
+
+          {/* Social links - Desktop Collapse Effect */}
+          <div
+            className={`hidden md:flex items-center overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${isScrolled ? 'max-w-0 opacity-0 -translate-x-4 pointer-events-none' : 'max-w-[400px] opacity-100 translate-x-4 ml-4'
+              }`}
+          >
+            <div className="flex space-x-2">
+              <a
+                href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center p-2 rounded-full hover:bg-white/20 dark:hover:bg-white/10"
+                aria-label="LinkedIn Profile"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a
+                href="https://x.com/RoshanAIs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-300 flex items-center p-2 rounded-full hover:bg-white/20 dark:hover:bg-white/10"
+                aria-label="X (Twitter) Profile"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 4l16 16M20 4l-16 16" strokeLinecap="round" />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/RavaniRoshan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center p-2 rounded-full hover:bg-white/20 dark:hover:bg-white/10"
+                aria-label="GitHub Profile"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Social icons - Mobile Only (Visible as icons) */}
+          <div className="flex md:hidden space-x-2 ml-2 overflow-x-auto no-scrollbar">
             <a
               href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center mt-1 group-hover:translate-x-1"
+              className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center"
               aria-label="LinkedIn Profile"
             >
               <svg
@@ -70,20 +183,18 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="mr-1 transition-transform duration-300 group-hover:rotate-12"
-                aria-hidden="true"
+                className="mr-1"
               >
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect x="2" y="9" width="4" height="12" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
-              <span className="hidden md:inline ml-1">roshan-ravani</span>
             </a>
             <a
               href="https://x.com/RoshanAIs"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-300 flex items-center mt-1 group-hover:translate-x-1"
+              className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-300 flex items-center"
               aria-label="X (Twitter) Profile"
             >
               <svg
@@ -96,18 +207,16 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="mr-1 transition-transform duration-300 group-hover:rotate-12"
-                aria-hidden="true"
+                className="mr-1"
               >
                 <path d="M4 4l16 16M20 4l-16 16" strokeLinecap="round" />
               </svg>
-              <span className="hidden md:inline ml-1">RoshanAIs</span>
             </a>
             <a
               href="https://github.com/RavaniRoshan"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center mt-1 group-hover:translate-x-1"
+              className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center"
               aria-label="GitHub Profile"
             >
               <svg
@@ -120,56 +229,45 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="mr-1 transition-transform duration-300 group-hover:rotate-12"
-                aria-hidden="true"
+                className="mr-1"
               >
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
               </svg>
-              <span className="hidden md:inline ml-1">RavaniRoshan</span>
             </a>
           </div>
         </div>
 
         {/* Right Section - Desktop Navigation and Theme Toggle */}
-        <nav className="hidden md:flex items-center space-x-2 relative">
-          <Link
-            to="/"
-            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${location.pathname === '/'
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
-              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
-              }`}
-          >
-            <span className="relative z-10">home</span>
-          </Link>
-          <Link
-            to="/blog"
-            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${location.pathname === '/blog'
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
-              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
-              }`}
-          >
-            <span className="relative z-10">blog</span>
-          </Link>
-          <Link
-            to="/contact"
-            className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${location.pathname === '/contact'
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
-              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
-              }`}
-          >
-            <span className="relative z-10">contact</span>
-          </Link>
+        <nav className="hidden md:flex items-center space-x-4 relative">
+          {['home', 'blog', 'contact'].map((page) => {
+            const path = page === 'home' ? '/' : `/${page}`;
+            const isActive = location.pathname === path;
+
+            return (
+              <Link
+                key={page}
+                to={path}
+                className={`relative px-5 py-2.5 rounded-full font-medium transition-all duration-300 overflow-hidden group backdrop-blur-md border ${isActive
+                  ? 'bg-white/20 dark:bg-white/10 border-white/40 dark:border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.2)] text-black dark:text-white'
+                  : 'bg-white/5 dark:bg-black/5 border-white/10 dark:border-white/5 text-gray-700 dark:text-gray-300 hover:bg-white/15 dark:hover:bg-white/10 hover:border-white/20 hover:scale-105'
+                  }`}
+              >
+                <span className="relative z-10 capitalize">{page}</span>
+              </Link>
+            );
+          })}
+
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:rotate-180 hover:shadow-lg"
+            className="p-2.5 rounded-full bg-white/10 dark:bg-black/20 border border-white/10 backdrop-blur-md text-gray-900 dark:text-gray-100 transition-all duration-300 hover:scale-105 hover:rotate-180 hover:shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:border-white/30"
             aria-label="Toggle theme"
             type="button"
           >
             {theme === 'light' ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -184,8 +282,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
