@@ -42,8 +42,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
     <>
       <header
         className={`sticky top-4 z-50 transition-all duration-300 mx-4 ${isScrolled
-            ? 'backdrop-blur-2xl bg-gradient-to-b from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-900/60 border border-white/20 dark:border-gray-700/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl'
-            : 'backdrop-blur-xl bg-gradient-to-b from-white/70 to-white/50 dark:from-gray-900/70 dark:to-gray-900/50 border border-white/10 dark:border-gray-700/10 shadow-[0_4px_16px_0_rgba(31,38,135,0.25)] rounded-2xl'
+          ? 'backdrop-blur-3xl backdrop-saturate-150 bg-gradient-to-b from-white/40 to-white/20 dark:from-gray-900/40 dark:to-gray-900/20 border border-white/30 dark:border-gray-700/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] rounded-2xl'
+          : 'backdrop-blur-2xl backdrop-saturate-150 bg-gradient-to-b from-white/30 to-white/10 dark:from-gray-900/30 dark:to-gray-900/10 border border-white/20 dark:border-gray-700/20 shadow-[0_4px_16px_0_rgba(31,38,135,0.25)] rounded-2xl'
           } flex justify-between items-center py-3 px-4 md:py-4 md:px-6 before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:pointer-events-none`}
       >
         {/* Left Section - Logo and Social Links */}
@@ -51,8 +51,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <h1 className="text-lg md:text-xl font-medium transition-all duration-300 hover:scale-105 cursor-pointer">
             Ravani Roshan
           </h1>
-          {/* Hide social links on mobile (below md breakpoint) */}
-          <div className="hidden md:flex space-x-4">
+          {/* Social links - Icons on mobile, Icon+Text on desktop */}
+          <div className="flex space-x-2 md:space-x-4 ml-1 md:ml-0 overflow-x-auto no-scrollbar">
             <a
               href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/"
               target="_blank"
@@ -77,7 +77,7 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
                 <rect x="2" y="9" width="4" height="12" />
                 <circle cx="4" cy="4" r="2" />
               </svg>
-              <span>roshan-ravani</span>
+              <span className="hidden md:inline ml-1">roshan-ravani</span>
             </a>
             <a
               href="https://x.com/RoshanAIs"
@@ -101,7 +101,7 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
               >
                 <path d="M4 4l16 16M20 4l-16 16" strokeLinecap="round" />
               </svg>
-              <span>RoshanAIs</span>
+              <span className="hidden md:inline ml-1">RoshanAIs</span>
             </a>
             <a
               href="https://github.com/RavaniRoshan"
@@ -125,7 +125,7 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
               >
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
               </svg>
-              <span>RavaniRoshan</span>
+              <span className="hidden md:inline ml-1">RavaniRoshan</span>
             </a>
           </div>
         </div>
@@ -135,8 +135,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <Link
             to="/"
             className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${location.pathname === '/'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
-                : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
+              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
               }`}
           >
             <span className="relative z-10">home</span>
@@ -144,8 +144,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <Link
             to="/blog"
             className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${location.pathname === '/blog'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
-                : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
+              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
               }`}
           >
             <span className="relative z-10">blog</span>
@@ -153,8 +153,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <Link
             to="/contact"
             className={`relative px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group ${location.pathname === '/contact'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
-                : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
+              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-purple-600 hover:to-blue-500'
+              : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70 hover:from-blue-400/60 hover:to-purple-500/60'
               }`}
           >
             <span className="relative z-10">contact</span>
@@ -345,8 +345,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             <Link
               to="/"
               className={`relative px-6 py-3 rounded-full font-medium transition-all duration-300 text-center ${location.pathname === '/'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                  : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70'
+                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+                : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70'
                 }`}
             >
               home
@@ -354,8 +354,8 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             <Link
               to="/blog"
               className={`relative px-6 py-3 rounded-full font-medium transition-all duration-300 text-center ${location.pathname === '/blog'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                  : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70'
+                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+                : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70'
                 }`}
             >
               blog
@@ -363,88 +363,15 @@ export const Header: FC<HeaderProps> = ({ theme, toggleTheme }) => {
             <Link
               to="/contact"
               className={`relative px-6 py-3 rounded-full font-medium transition-all duration-300 text-center ${location.pathname === '/contact'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                  : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70'
+                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
+                : 'bg-gradient-to-r from-blue-400/40 to-purple-500/40 text-white/70'
                 }`}
             >
               contact
             </Link>
           </nav>
 
-          {/* Social Links in Mobile Menu */}
-          <div className="flex flex-col space-y-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-            <a
-              href="https://www.linkedin.com/in/roshan-ravani-3a79882a3/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center"
-              aria-label="LinkedIn Profile"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2"
-              >
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-              <span>LinkedIn</span>
-            </a>
-            <a
-              href="https://x.com/RoshanAIs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-300 flex items-center"
-              aria-label="X (Twitter) Profile"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2"
-              >
-                <path d="M4 4l16 16M20 4l-16 16" strokeLinecap="round" />
-              </svg>
-              <span>X (Twitter)</span>
-            </a>
-            <a
-              href="https://github.com/RavaniRoshan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-all duration-300 flex items-center"
-              aria-label="GitHub Profile"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="mr-2"
-              >
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-              </svg>
-              <span>GitHub</span>
-            </a>
-          </div>
+          {/* Social Links removed from mobile menu as they are now in header */}
         </div>
       </div>
     </>
