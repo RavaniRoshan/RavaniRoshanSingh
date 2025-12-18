@@ -7,6 +7,15 @@ const Blog: React.FC = () => {
 
   const blogPosts = [
     {
+      id: 11,
+      title: "Why Pixar Actually Wins: The USD Story",
+      date: "December 12, 2025",
+      excerpt: "You watch Toy Story and think: brilliant creativity. But you're only seeing half the story. The other half is infrastructure. And that's where Pixar actually wins. The story of USD.",
+      readTime: "8 min read",
+      tags: ["Pixar", "USD", "Infrastructure", "Systems Thinking"],
+      link: "/blog/pixar-usd-story"
+    },
+    {
       id: 10,
       title: "Nano Banana Pro: We Finally Taught an Image Model That Text Is a Real Thing",
       date: "November 26, 2025",
