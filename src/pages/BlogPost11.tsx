@@ -8,7 +8,7 @@ const BlogPost11: React.FC = () => {
       date="December 12, 2025"
       readTime="8 min read"
       tags={["Pixar", "USD", "Infrastructure", "Systems Thinking"]}
-      emoji="🎬"
+      imageSrc="/blog/pixar-usd.png"
     >
       <p className="text-lg font-medium mb-6">
         You watch Toy Story and think: brilliant creativity. You watch Inside Out and think: genius direction. You watch Coco and think: pure magic.

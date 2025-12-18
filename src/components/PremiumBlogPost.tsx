@@ -8,6 +8,7 @@ interface PremiumBlogPostProps {
   tags: string[];
   children: React.ReactNode;
   emoji?: string;
+  imageSrc?: string;
 }
 
 export const PremiumBlogPost: React.FC<PremiumBlogPostProps> = ({
@@ -16,7 +17,8 @@ export const PremiumBlogPost: React.FC<PremiumBlogPostProps> = ({
   readTime,
   tags,
   children,
-  emoji = '📝'
+  emoji = '📝',
+  imageSrc
 }) => {
   return (
     <div className="min-h-screen px-4 py-8 md:px-8 lg:px-16 max-w-4xl mx-auto">
@@ -41,9 +43,20 @@ export const PremiumBlogPost: React.FC<PremiumBlogPostProps> = ({
             ))}
           </div>
         </div>
-        <div className="w-full h-64 md:h-80 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30 rounded-xl mb-8 flex items-center justify-center border border-blue-200 dark:border-blue-800">
-          <div className="text-7xl md:text-8xl">{emoji}</div>
-        </div>
+
+        {imageSrc ? (
+          <div className="w-full mb-8 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-lg">
+            <img
+              src={imageSrc}
+              alt={title}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        ) : (
+          <div className="w-full h-64 md:h-80 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30 rounded-xl mb-8 flex items-center justify-center border border-blue-200 dark:border-blue-800">
+            <div className="text-7xl md:text-8xl">{emoji}</div>
+          </div>
+        )}
       </header>
 
       <article className="space-y-6">
