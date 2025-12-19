@@ -19,13 +19,13 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        The other half is infrastructure. And that's where Pixar actually wins.
+        The other half is <strong>infrastructure</strong>. And that's where Pixar <em>actually</em> wins.
       </p>
 
       <h2>The Problem Nobody Talks About</h2>
 
       <p>
-        In 2012, Pixar was making Brave. The film was technically ambitious. The hair simulation alone was groundbreaking. But behind the scenes, something was breaking.
+        In 2012, Pixar was making <em>Brave</em>. The film was technically ambitious. The hair simulation alone was groundbreaking. But behind the scenes, something was breaking.
       </p>
 
       <p>
@@ -44,7 +44,7 @@ const BlogPost11: React.FC = () => {
         One department pushes a change. It breaks another department's work. A light gets adjusted. Suddenly a shadow doesn't match the animation. An asset gets updated. Suddenly 50 animated sequences need re-rendering.
       </p>
 
-      <p>
+      <p className="font-semibold">
         This wasn't a creativity problem. This was a systems problem.
       </p>
 
@@ -63,11 +63,11 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        They called it USD. Universal Scene Description.
+        They called it <strong>USD</strong>. Universal Scene Description.
       </p>
 
       <p>
-        Not a feature. Not a tool. A foundation.
+        Not a feature. Not a tool. <strong>A foundation.</strong>
       </p>
 
       <p>
@@ -87,7 +87,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        It's composition. It's inheritance. It's versioning. It's the programming paradigm applied to 3D production.
+        It's composition. It's inheritance. It's versioning. <strong>It's the programming paradigm applied to 3D production.</strong>
       </p>
 
       <h2>How It Actually Works: The Woody Example</h2>
@@ -97,7 +97,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        Imagine you're animating Woody from Toy Story. The model has been touched by 50,000 animator keyframes across multiple sequences. The rigging has been tweaked hundreds of times. The materials have been adjusted by the lighting department. The hair simulation has been baked.
+        Imagine you're animating Woody from <em>Toy Story</em>. The model has been touched by 50,000 animator keyframes across multiple sequences. The rigging has been tweaked hundreds of times. The materials have been adjusted by the lighting department. The hair simulation has been baked.
       </p>
 
       <p>
@@ -109,11 +109,11 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <ul>
-        <li>The base model layer (geometry)</li>
-        <li>The rigging layer (skeleton and controls)</li>
-        <li>The animation layer (keyframes)</li>
-        <li>The material layer (shaders and textures)</li>
-        <li>The simulation layer (hair, cloth)</li>
+        <li>The <strong>base model layer</strong> (geometry)</li>
+        <li>The <strong>rigging layer</strong> (skeleton and controls)</li>
+        <li>The <strong>animation layer</strong> (keyframes)</li>
+        <li>The <strong>material layer</strong> (shaders and textures)</li>
+        <li>The <strong>simulation layer</strong> (hair, cloth)</li>
       </ul>
 
       <p>
@@ -121,7 +121,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        Woody doesn't break. Because the system was designed for this.
+        Woody doesn't break. <strong>Because the system was designed for this.</strong>
       </p>
 
       <p>
@@ -139,7 +139,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        The real innovation is that Pixar built the infrastructure that lets artists work at their best. They removed friction. They removed waiting. They removed the 80% of time that artists spend managing files and waiting for approvals and dealing with broken pipelines.
+        The real innovation is that <strong>Pixar built the infrastructure that lets artists work at their best</strong>. They removed friction. They removed waiting. They removed the 80% of time that artists spend managing files and waiting for approvals and dealing with broken pipelines.
       </p>
 
       <p>
@@ -161,7 +161,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        They open-sourced it.
+        <strong>They open-sourced it.</strong>
       </p>
 
       <p>
@@ -177,7 +177,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        Because Pixar understood something fundamental: infrastructure compounds when it becomes a standard.
+        Because Pixar understood something fundamental: <strong>infrastructure compounds when it becomes a standard.</strong>
       </p>
 
       <p>
@@ -185,10 +185,10 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <ul>
-        <li>The tooling ecosystem would grow (more plug-ins, more integrations)</li>
-        <li>The talent pool would expand (artists trained on USD everywhere)</li>
-        <li>The adoption would accelerate (studios would build on top of it)</li>
-        <li>The standard would strengthen (everyone pushing for the same format)</li>
+        <li>The <strong>tooling ecosystem would grow</strong> (more plug-ins, more integrations)</li>
+        <li>The <strong>talent pool would expand</strong> (artists trained on USD everywhere)</li>
+        <li>The <strong>adoption would accelerate</strong> (studios would build on top of it)</li>
+        <li>The <strong>standard would strengthen</strong> (everyone pushing for the same format)</li>
       </ul>
 
       <p>
@@ -202,7 +202,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        Disney uses it across all their animation pipelines. NVIDIA built Omniverse on top of it — their metaverse platform for 3D collaboration. Apple is using it for Vision Pro and AR experiences. Adobe integrated it into their 3D tools. Microsoft, Intel, and hundreds of VFX studios now use USD as standard.
+        <strong>Disney</strong> uses it across all their animation pipelines. <strong>NVIDIA</strong> built Omniverse on top of it — their metaverse platform for 3D collaboration. <strong>Apple</strong> is using it for Vision Pro and AR experiences. <strong>Adobe</strong> integrated it into their 3D tools. Microsoft, Intel, and hundreds of VFX studios now use USD as standard.
       </p>
 
       <p>
@@ -215,7 +215,7 @@ const BlogPost11: React.FC = () => {
         Here's what most companies miss:
       </p>
 
-      <p>
+      <p className="font-semibold">
         The best don't win by having the best people. They win by building systems that let people be their best.
       </p>
 
@@ -228,7 +228,7 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        Pixar built a system that lets creators create.
+        <strong>Pixar built a system that lets creators create.</strong>
       </p>
 
       <p>
@@ -258,16 +258,16 @@ const BlogPost11: React.FC = () => {
       </p>
 
       <p>
-        And it was invented not because someone wanted to be creative. But because someone asked: "What if we removed the friction?"
+        And it was invented not because someone wanted to be creative. But because someone asked: <em>"What if we removed the friction?"</em>
       </p>
 
       <p>
         That question is the difference between good studios and great ones.
       </p>
 
-      <p>
+      <blockquote>
         The people who simplify are the ones who scale.
-      </p>
+      </blockquote>
     </PremiumBlogPost>
   );
 };
