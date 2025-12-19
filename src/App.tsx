@@ -21,6 +21,7 @@ import BlogPost7 from './pages/BlogPost7';
 import BlogPost8 from './pages/BlogPost8';
 import BlogPost9 from './pages/BlogPost9';
 import BlogPost10 from './pages/BlogPost10';
+import BlogPost11 from './pages/BlogPost11';
 import CertificatesPage from './pages/CertificatesPage';
 import Contact from './pages/Contact';
 import { useState, useEffect } from 'react';
@@ -79,6 +80,7 @@ function App() {
           <Route path="/blog/cloud-architecture" element={<BlogPost8 />} />
           <Route path="/blog/building-agent-x" element={<BlogPost9 />} />
           <Route path="/blog/nano-banana-pro" element={<BlogPost10 />} />
+          <Route path="/blog/pixar-usd-story" element={<BlogPost11 />} />
         </Routes>
       </div>
       <Toaster />
