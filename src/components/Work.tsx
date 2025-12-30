@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Bot, Search, BookOpen, Brain, Github, ExternalLink } from 'lucide-react';
 
 const Work: React.FC = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -7,64 +8,47 @@ const Work: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'Nidera',
-      description: 'A revolutionary Chromium-based browser that seamlessly integrates AI agent capabilities directly into the browsing experience. Nidera transforms the browser from a passive web viewer into an intelligent digital companion that understands user context, automates complex workflows, and deeply integrates with the user\'s entire digital ecosystem.',
-      period: 'now',
-      color: 'orange',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" y1="21" x2="16" y2="21"></line>
-          <line x1="12" y1="17" x2="12" y2="21"></line>
-        </svg>
-      ),
-      gradient: 'from-orange-400 to-red-500',
-      bgGradient: 'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20'
-    },
-    {
-      id: 2,
-      title: 'BlendTools',
-      description: 'A curated collection of tools designed to enhance and streamline workflows in Blender, the open-source 3D creation suite.',
-      period: 'Jan 2024 - Apr 2025',
-      color: 'purple',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-          <path d="M2 17l10 5 10-5"></path>
-          <path d="M2 12l10 5 10-5"></path>
-        </svg>
-      ),
-      gradient: 'from-purple-400 to-pink-500',
-      bgGradient: 'from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20'
-    },
-    {
-      id: 3,
-      title: 'ReguSense AI',
-      description: 'A modern SaaS website for an AI Regulatory Compliance Translator that helps small businesses navigate AI regulations (EU AI Act, Colorado AI Act, California AI laws) by converting complex legal requirements into actionable compliance checklists.',
-      period: 'Jul 2022 - Nov 2023',
-      color: 'blue',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-      ),
+      title: 'Agent-X',
+      description: 'AI agent that automates browser tasks using vision-language models. Interacts with websites from plain English instructions, leveraging Python, FastAPI, Playwright, React, and Gemini 2.5. Open-source, safety-first, and fully browser-native for hands-free web automation.',
+      period: 'Oct 2024 - Dec 2024',
+      link: 'https://github.com/RavaniRoshan/Agent-X',
+      tags: ['Python', 'FastAPI', 'Playwright', 'React'],
+      icon: <Bot className="w-6 h-6" />,
       gradient: 'from-blue-400 to-cyan-500',
       bgGradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
     },
     {
+      id: 2,
+      title: 'LegacyLens',
+      description: 'The AI Archaeologist. Turn 1M+ lines of legacy spaghetti code into a living dependency map using Gemini 3.0 Pro. Visualize fragility, trace logic, and chat with your monolith. Built with Next.js to transform how we understand legacy systems.',
+      period: 'Nov 2024 - Dec 2024',
+      link: 'https://github.com/RavaniRoshan/LegacyLens',
+      tags: ['Next.js', 'Gemini 3.0', 'AI Analysis'],
+      icon: <Search className="w-6 h-6" />,
+      gradient: 'from-purple-400 to-indigo-500',
+      bgGradient: 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20'
+    },
+    {
+      id: 3,
+      title: 'RAG Course Project',
+      description: 'Comprehensive RAG course covering theory, production-ready code, and 15 modules—reranking, chunking, embeddings, vector DBs, hybrid search, query optimization, agentic workflows, and deployment. Suited for AI/ML developers seeking advanced RAG knowledge.',
+      period: 'Jun 2024 - Sep 2024',
+      link: 'https://github.com/RavaniRoshan/Rag-course',
+      tags: ['RAG', 'Vector DB', 'AI Agents'],
+      icon: <BookOpen className="w-6 h-6" />,
+      gradient: 'from-red-400 to-orange-500',
+      bgGradient: 'from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20'
+    },
+    {
       id: 4,
-      title: 'DayWise',
-      description: 'A flexible personal day planner app combining Notion-like organization, Google Gemini intelligence, and visual insights to help users track goals, manage time, and make informed daily decisions.',
-      period: 'Sept 2018 - Dec 2023',
-      color: 'yellow',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-        </svg>
-      ),
-      gradient: 'from-yellow-400 to-orange-500',
-      bgGradient: 'from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20'
+      title: 'AXiOM-ONE',
+      description: 'A Research-Grade Reasoning System (Not a Chatbot). A thinking-first research agent that decomposes problems, runs multi-step reasoning loops, validates its own outputs, and exposes the entire thought pipeline. Optimizes for correctness under pressure.',
+      period: 'Aug 2024 - Dec 2024',
+      link: 'https://github.com/RavaniRoshan/AXiOM',
+      tags: ['Next.js', 'FastAPI', 'Gemini 3 Pro'],
+      icon: <Brain className="w-6 h-6" />,
+      gradient: 'from-pink-400 to-rose-500',
+      bgGradient: 'from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20'
     }
   ];
 
@@ -106,7 +90,7 @@ const Work: React.FC = () => {
           <div
             key={project.id}
             data-index={index}
-            className={`project-card-animated group relative overflow-hidden rounded-xl bg-gradient-to-br ${project.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer ${
+            className={`project-card-animated group relative overflow-hidden rounded-xl bg-gradient-to-br ${project.bgGradient} border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col ${
               visibleCards.includes(index) 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
@@ -117,51 +101,63 @@ const Work: React.FC = () => {
             }}
           >
             {/* Simplified background overlay */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
             
             {/* Reduced floating particles */}
-            <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-40 animate-pulse"></div>
-            <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-30 animate-pulse delay-300"></div>
+            <div className="absolute top-2 right-2 w-1 h-1 bg-white rounded-full opacity-40 animate-pulse pointer-events-none"></div>
+            <div className="absolute bottom-4 left-4 w-0.5 h-0.5 bg-white rounded-full opacity-30 animate-pulse delay-300 pointer-events-none"></div>
             
-            <div className="relative z-10 p-6">
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${project.gradient} text-white mb-4 group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
-                {project.icon}
+            <div className="relative z-10 p-6 flex flex-col h-full">
+              <div className="flex items-start justify-between mb-4">
+                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${project.gradient} text-white group-hover:scale-105 transition-transform duration-300 shadow-lg`}>
+                  {project.icon}
+                </div>
+                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium italic">
+                  {project.period}
+                </span>
               </div>
               
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+              <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                 {project.title}
               </h3>
               
-              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4 group-hover:text-gray-600 dark:group-hover:text-gray-200 transition-colors duration-300">
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-6 group-hover:text-gray-600 dark:group-hover:text-gray-200 transition-colors duration-300 flex-grow">
                 {project.description}
               </p>
               
-              <div className="flex items-center justify-between">
-                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${project.gradient} text-white shadow-sm`}>
-                  {project.period}
-                </span>
-                
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300">
-                    <path d="M7 17L17 7"></path>
-                    <path d="M7 7h10v10"></path>
-                  </svg>
+              <div className="mt-auto space-y-4">
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="px-2 py-1 text-xs rounded bg-white/50 dark:bg-black/20 border border-gray-100 dark:border-gray-700 text-gray-600 dark:text-gray-300">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
+
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group/link"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>VIEW PROJECT</span>
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                </a>
               </div>
             </div>
             
             {/* Simplified hover effect border */}
-            <div className={`absolute inset-0 rounded-xl border border-transparent group-hover:border-gray-300 dark:group-hover:border-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+            <div className={`absolute inset-0 rounded-xl border border-transparent group-hover:border-gray-300 dark:group-hover:border-gray-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}></div>
           </div>
         ))}
       </div>
       
       {/* Reduced background decoration */}
-      <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-lg"></div>
-      <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-br from-pink-500/5 to-yellow-500/5 rounded-full blur-lg"></div>
+      <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-lg pointer-events-none"></div>
+      <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-gradient-to-br from-pink-500/5 to-yellow-500/5 rounded-full blur-lg pointer-events-none"></div>
     </section>
   );
 };
 
 export default Work;
-
