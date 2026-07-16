@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="niki">
+  <defs>
+    <linearGradient id="niki-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff9a3d"/>
+      <stop offset="1" stop-color="#ff5e3a"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="84" height="84" rx="22" fill="url(#niki-g)"/>
+  <g fill="#fff">
+    <circle cx="50" cy="19" r="4"/>
+    <rect x="48.5" y="20" width="3" height="12" rx="1.5"/>
+    <rect x="30" y="32" width="40" height="36" rx="11"/>
+  </g>
+  <g fill="#2b2f36">
+    <circle cx="43" cy="48" r="4.2"/>
+    <circle cx="57" cy="48" r="4.2"/>
+    <rect x="42" y="58" width="16" height="4.5" rx="2.2"/>
+  </g>
+</svg>

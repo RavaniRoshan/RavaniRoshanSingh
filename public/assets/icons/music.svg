@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Apple Music">
+  <defs>
+    <linearGradient id="music-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fa233b"/>
+      <stop offset="1" stop-color="#fb5c74"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="44" fill="url(#music-grad)"/>
+  <g fill="#ffffff">
+    <ellipse cx="38" cy="64" rx="7.5" ry="5.8" transform="rotate(-18 38 64)"/>
+    <ellipse cx="60" cy="58" rx="7.5" ry="5.8" transform="rotate(-18 60 58)"/>
+    <rect x="44" y="32" width="3.2" height="32" rx="1.6"/>
+    <rect x="66" y="26" width="3.2" height="32" rx="1.6"/>
+    <path d="M44 32 L69 26 L69 33 L44 39 Z"/>
+  </g>
+</svg>

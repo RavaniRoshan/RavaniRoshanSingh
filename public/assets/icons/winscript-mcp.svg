@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="WinScript MCP">
+  <defs>
+    <linearGradient id="wsmcp-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#27c7b6"/>
+      <stop offset="1" stop-color="#0e8f86"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="84" height="84" rx="22" fill="url(#wsmcp-g)"/>
+  <g fill="#fff">
+    <rect x="43" y="24" width="4.5" height="13" rx="2.2"/>
+    <rect x="53" y="24" width="4.5" height="13" rx="2.2"/>
+    <rect x="37" y="37" width="26" height="20" rx="7"/>
+  </g>
+  <path d="M50 57 C50 66 60 68 64 74" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+  <rect x="60" y="70" width="14" height="11" rx="3" fill="#fff"/>
+</svg>

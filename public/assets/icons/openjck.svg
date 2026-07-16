@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="OpenJCK">
+  <defs>
+    <linearGradient id="openjck-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3fd07f"/>
+      <stop offset="1" stop-color="#1f9d5b"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="84" height="84" rx="22" fill="url(#openjck-g)"/>
+  <circle cx="43" cy="43" r="17" fill="none" stroke="#fff" stroke-width="5"/>
+  <line x1="55" y1="55" x2="69" y2="69" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>
+  <polyline points="35 43 43 49 51 38" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

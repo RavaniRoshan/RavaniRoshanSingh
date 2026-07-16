@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Photos">
+  <defs>
+    <clipPath id="photos-clip"><rect x="6" y="6" width="88" height="88" rx="22"/></clipPath>
+  </defs>
+  <g clip-path="url(#photos-clip)">
+    <rect x="6" y="6" width="88" height="88" fill="#ffffff"/>
+    <g>
+      <g transform="rotate(0 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#ff3b30"/></g>
+      <g transform="rotate(45 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#ff9500"/></g>
+      <g transform="rotate(90 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#ffcc00"/></g>
+      <g transform="rotate(135 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#34c759"/></g>
+      <g transform="rotate(180 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#00c7be"/></g>
+      <g transform="rotate(225 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#007aff"/></g>
+      <g transform="rotate(270 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#5856d6"/></g>
+      <g transform="rotate(315 50 50)"><ellipse cx="50" cy="31" rx="7" ry="17" fill="#ff2d55"/></g>
+    </g>
+    <circle cx="50" cy="50" r="9" fill="#ffffff"/>
+  </g>
+</svg>
